@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLICKSELLAR Asset Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; }
+        .status { font-weight: bold; }
+        .success { color: green; }
+        .error { color: red; }
+        img { max-width: 300px; margin: 10px; }
+        video { max-width: 400px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>CLICKSELLAR Asset Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Logo Images Test</h2>
+        <div>
+            <h3>Primary Logo</h3>
+            <img src="/attached_assets/NEW_CLICKSELLAR_LOGO.png" alt="CLICKSELLAR Logo" onload="markSuccess('logo-1')" onerror="markError('logo-1')">
+            <span id="logo-1" class="status">Loading...</span>
+        </div>
+        
+        <div>
+            <h3>Alternative Logo</h3>
+            <img src="/attached_assets/CLICKSELLAR.png" alt="CLICKSELLAR Alt Logo" onload="markSuccess('logo-2')" onerror="markError('logo-2')">
+            <span id="logo-2" class="status">Loading...</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Showcase Images Test</h2>
+        <div>
+            <h3>Luxury Boutique</h3>
+            <img src="/attached_assets/5c07237d-3676-4f0e-9070-45a4306c527d_1750224333046.png" alt="Luxury Boutique" onload="markSuccess('showcase-1')" onerror="markError('showcase-1')">
+            <span id="showcase-1" class="status">Loading...</span>
+        </div>
+        
+        <div>
+            <h3>Auto Showroom</h3>
+            <img src="/attached_assets/632e9d9e-0511-4026-b9d2-64336ca2ffd2_1750225141625.png" alt="Auto Showroom" onload="markSuccess('showcase-2')" onerror="markError('showcase-2')">
+            <span id="showcase-2" class="status">Loading...</span>
+        </div>
+        
+        <div>
+            <h3>Penthouse Interior</h3>
+            <img src="/attached_assets/e883cbef-7add-4c62-9e9c-b23b8b278473_1750225597189.png" alt="Penthouse Interior" onload="markSuccess('showcase-3')" onerror="markError('showcase-3')">
+            <span id="showcase-3" class="status">Loading...</span>
+        </div>
+        
+        <div>
+            <h3>AR Shopping Experience</h3>
+            <img src="/attached_assets/e0d1bb4c-043e-46e4-a873-56d8343ec06b_1750226948354.jpg" alt="AR Shopping" onload="markSuccess('showcase-4')" onerror="markError('showcase-4')">
+            <span id="showcase-4" class="status">Loading...</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Video Assets Test</h2>
+        <div>
+            <h3>Demo Video 1</h3>
+            <video controls onloadeddata="markSuccess('video-1')" onerror="markError('video-1')">
+                <source src="/attached_assets/Add a heading (18).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <span id="video-1" class="status">Loading...</span>
+        </div>
+        
+        <div>
+            <h3>Demo Video 2</h3>
+            <video controls onloadeddata="markSuccess('video-2')" onerror="markError('video-2')">
+                <source src="/attached_assets/Add a heading (19).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <span id="video-2" class="status">Loading...</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Design Assets Test</h2>
+        <div>
+            <h3>Color Palette</h3>
+            <img src="/attached_assets/@Studiocosoe • Color Palette Inspiration.jpeg" alt="Color Palette" onload="markSuccess('design-1')" onerror="markError('design-1')">
+            <span id="design-1" class="status">Loading...</span>
+        </div>
+        
+        <div>
+            <h3>Gradient Inspiration</h3>
+            <img src="/attached_assets/Cool Color Gradients For Brands.jpeg" alt="Gradients" onload="markSuccess('design-2')" onerror="markError('design-2')">
+            <span id="design-2" class="status">Loading...</span>
+        </div>
+    </div>
+
+    <script>
+        function markSuccess(id) {
+            const element = document.getElementById(id);
+            element.textContent = 'Loaded Successfully';
+            element.className = 'status success';
+        }
+        
+        function markError(id) {
+            const element = document.getElementById(id);
+            element.textContent = 'Failed to Load';
+            element.className = 'status error';
+        }
+        
+        // Summary report after 5 seconds
+        setTimeout(() => {
+            const successElements = document.querySelectorAll('.success');
+            const errorElements = document.querySelectorAll('.error');
+            const totalTests = document.querySelectorAll('.status').length;
+            
+            console.log(`Asset Test Results: ${successElements.length}/${totalTests} assets loaded successfully`);
+            
+            if (errorElements.length > 0) {
+                console.warn('Failed assets:', Array.from(errorElements).map(el => el.id));
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

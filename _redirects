@@ -1,0 +1,8 @@
+# SPA fallback for client-side routing
+# This ensures all dashboard routes work properly after deployment
+/api/* 200
+/health 200
+/_health 200
+/assets/* 200
+/attached_assets/* 200
+/* /index.html 200
